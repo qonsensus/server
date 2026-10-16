@@ -1,4 +1,4 @@
-export class RegistrationResponseDto {
+export class StartRegistrationResponseDto {
   registrationResponse: string;
   registrationToken: string;
 }

@@ -7,4 +7,7 @@ export class AuthPackage {
 
   @Property({ index: true })
   username: string;
+
+  @Property()
+  registrationRecord: string;
 }
