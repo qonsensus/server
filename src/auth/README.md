@@ -7,22 +7,22 @@ is used to allow for the Rust crate to be bundled with and used inside the backe
 ```mermaid
 sequenceDiagram
     actor User
-    participant Client
-    participant Server
+    participant Web Client
+    participant Qonsensus Server
     participant Cache
-    participant Database
-    User->>+Client: username, password
-    Client->>+Server: blinded password,<br/>username
-    Server->>+Cache: registration state<br/>keyed by username<br/>(short-lived)
-    Cache-->>-Server: success
-    Server-->>-Client: registration data,<br/>registration token 
-    Client->>+Server: registration record,<br/>username,<br/>registration token
-    Server->>+Cache: get registration state
-    Cache-->>-Server: registration state
-    Server->>+Cache: delete registration state
-    Cache-->>-Server: success
-    Server->>+Database: save auth package
-    Database-->>-Server: success
-    Server-->>-Client: success
-    deactivate Client
+    participant PostgreSQL
+    User->>+Web Client: username, password
+    Web Client->>+Qonsensus Server: blinded password,<br/>username
+    Qonsensus Server->>+Cache: registration state<br/>keyed by username<br/>(short-lived)
+    Cache-->>-Qonsensus Server: success
+    Qonsensus Server-->>-Web Client: registration data,<br/>registration token 
+    Web Client->>+Qonsensus Server: registration record,<br/>username,<br/>registration token
+    Qonsensus Server->>+Cache: get registration state
+    Cache-->>-Qonsensus Server: registration state
+    Qonsensus Server->>+Cache: delete registration state
+    Cache-->>-Qonsensus Server: success
+    Qonsensus Server->>+PostgreSQL: save auth package
+    PostgreSQL-->>-Qonsensus Server: success
+    Qonsensus Server-->>-Web Client: success
+    deactivate Web Client
 ```
