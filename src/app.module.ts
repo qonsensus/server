@@ -10,7 +10,9 @@ import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     CacheModule.register(),
     MikroOrmModule.forRootAsync({
       imports: [ConfigModule],
