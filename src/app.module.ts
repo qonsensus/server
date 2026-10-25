@@ -7,6 +7,7 @@ import { ReflectMetadataProvider } from '@mikro-orm/decorators/legacy';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { AuthModule } from './auth/auth.module.js';
 import { CacheModule } from '@nestjs/cache-manager';
+import { InstanceModule } from './instance/instance.module.js';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { CacheModule } from '@nestjs/cache-manager';
       driver: PostgreSqlDriver,
     }),
     AuthModule,
+    InstanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
