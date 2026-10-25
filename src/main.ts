@@ -17,6 +17,9 @@ async function bootstrap() {
     yamlDocumentUrl: 'swagger/yaml',
   });
 
+  app.enableCors({
+    origin: '*',
+  });
   await app.listen(process.env.PORT ?? 3000);
 }
 await bootstrap();
