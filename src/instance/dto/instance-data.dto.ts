@@ -1,5 +1,8 @@
 export class InstanceDataDto {
-  instanceName: string;
-  instanceHost: string;
-  instancePort?: number;
+  id: string;
+  tls: boolean;
+  name: string;
+  host: string;
+  port?: number;
+  fullUrl: string;
 }
